@@ -1,97 +1,145 @@
-# 🧠 Handwritten Digit Recognition using CNN (MNIST)
+# Handwritten Digit Recognition using CNN (MNIST)
 
 ## Problem Description
-This project implements a Deep Learning model using Convolutional Neural Networks (CNN) to classify handwritten digits (0–9) from the MNIST dataset.
 
-The goal is to compare two CNN architectures:
-- Simple CNN
-- Deep CNN with Dropout
+This project implements Deep Learning models using Convolutional Neural Networks (CNNs) to classify handwritten digits (0–9) from the MNIST dataset.
 
-and evaluate their performance based on accuracy and loss.
+The main objective is to compare:
 
----
+* Simple CNN
+* Deep CNN with Dropout
 
-## Dataset
-- Dataset: MNIST
-- Source: torchvision.datasets.MNIST
-- Image size: 28x28 grayscale
-- Classes: 10 digits (0–9)
-- Training samples: 60,000
-- Testing samples: 10,000
+and evaluate their performance using accuracy and loss metrics.
 
 ---
 
-## Models Used
+# Dataset
 
-### 1️Simple CNN
+* Dataset: MNIST
+* Source: torchvision.datasets.MNIST
+* Image Size: 28×28 grayscale
+* Number of Classes: 10 digits (0–9)
+* Training Samples: 60,000
+* Testing Samples: 10,000
+
+---
+
+# Models Used
+
+## 1️ Simple CNN
+
 Architecture:
-- Conv2D → ReLU → BatchNorm → MaxPool
-- Conv2D → ReLU → BatchNorm → MaxPool
-- Fully Connected Layers
 
-### 2️Deep CNN
+* Conv2D → ReLU → BatchNorm → MaxPool
+* Conv2D → ReLU → BatchNorm → MaxPool
+* Fully Connected Layers
+
+## 2️ Deep CNN + Dropout
+
 Architecture:
-- More convolutional layers
-- Batch Normalization
-- Dropout (0.5) for regularization
-- Fully Connected Layers
+
+* Multiple Convolutional Layers
+* Batch Normalization
+* Dropout (0.5) for regularization
+* Fully Connected Layers
 
 ---
 
-## Training Details
-- Optimizer: Adam
-- Loss Function: CrossEntropyLoss
-- Epochs: 5
-- Batch Size: 32
-- Framework: PyTorch
+# Training Details
+
+* Optimizer: Adam
+* Loss Function: CrossEntropyLoss
+* Epochs: 5
+* Batch Size: 32
+* Framework: PyTorch
 
 ---
 
-## Results
+# Training Results
 
-### Simple CNN Results
+## Simple CNN Results
 
-| Epoch | Train Acc | Test Acc | Train Loss | Test Loss |
-|------|----------|----------|------------|-----------|
-| 1 | 99.04% | 99.00% | 0.0343 | 0.0364 |
-| 2 | 99.34% | 99.12% | 0.0216 | 0.0350 |
-| 3 | 99.51% | 98.91% | 0.0161 | 0.0452 |
-| 4 | 99.49% | 98.88% | 0.0164 | 0.0523 |
-| 5 | 99.58% | 98.80% | 0.0135 | 0.0532 |
-
----
-
-### Deep CNN Results
-
-| Epoch | Train Acc | Test Acc | Train Loss | Test Loss |
-|------|----------|----------|------------|-----------|
-| 1 | 94.92% | 98.70% | 0.1745 | 0.0397 |
-| 2 | 97.56% | 98.73% | 0.0888 | 0.0499 |
-| 3 | 98.12% | 98.84% | 0.0718 | 0.0505 |
-| 4 | 98.48% | 99.04% | 0.0576 | 0.0378 |
-| 5 | 98.66% | 99.19% | 0.0492 | 0.0399 |
+| Epoch | Train Accuracy | Test Accuracy | Train Loss | Test Loss |
+| ----- | -------------- | ------------- | ---------- | --------- |
+| 1     | 97.21%         | 98.02%        | 0.0901     | 0.0682    |
+| 2     | 98.70%         | 98.76%        | 0.0413     | 0.0396    |
+| 3     | 99.15%         | 98.64%        | 0.0275     | 0.0451    |
+| 4     | 99.34%         | 98.84%        | 0.0227     | 0.0461    |
+| 5     | 99.44%         | 98.69%        | 0.0186     | 0.0581    |
 
 ---
 
-## Final Comparison
+## Deep CNN Results
 
-| Model | Best Test Accuracy | Final Test Loss |
-|------|-------------------|----------------|
-| Simple CNN | 99.12% | 0.0532 |
-| Deep CNN | **99.19%** | 0.0399 |
-
----
-
-## Observations
-- Deep CNN achieved slightly better generalization due to Dropout and deeper architecture.
-- Simple CNN converges faster but slightly overfits at later epochs.
-- Both models perform very well on MNIST dataset.
+| Epoch | Train Accuracy | Test Accuracy | Train Loss | Test Loss |
+| ----- | -------------- | ------------- | ---------- | --------- |
+| 1     | 95.62%         | 98.70%        | 0.1533     | 0.0426    |
+| 2     | 97.83%         | 98.89%        | 0.0798     | 0.0354    |
+| 3     | 98.16%         | 99.21%        | 0.0675     | 0.0252    |
+| 4     | 98.56%         | 98.96%        | 0.0535     | 0.0341    |
+| 5     | 98.83%         | 99.23%        | 0.0424     | 0.0236    |
 
 ---
 
-## How to Run
+# Final Comparison
 
-1. Open notebook in Google Colab or Jupyter Notebook  
+| Model      | Final Test Accuracy | Final Test Loss |
+| ---------- | ------------------- | --------------- |
+| Simple CNN | 98.69%              | 0.0581          |
+| Deep CNN   | **99.23%**          | **0.0236**      |
+
+---
+
+# Observations
+
+* The Deep CNN achieved better generalization performance due to the deeper architecture and Dropout regularization.
+* The Simple CNN converged faster but showed slight overfitting during later epochs.
+* Both models achieved excellent performance on the MNIST dataset.
+
+---
+
+# Visualization
+
+The project includes:
+
+* Training vs Testing Accuracy Curves
+* Training vs Testing Loss Curves
+
+These visualizations help analyze:
+
+* Model convergence
+* Overfitting behavior
+* Generalization performance
+
+---
+
+# Additional Feature
+
+The model can also predict custom handwritten digit images uploaded by the user using image preprocessing and inference techniques.
+
+---
+
+# How to Run
+
+1. Open the notebook in Google Colab or Jupyter Notebook
+
 2. Install dependencies:
+
 ```bash
 pip install torch torchvision matplotlib
+```
+
+3. Run all notebook cells
+
+4. Upload a handwritten digit image for prediction
+
+---
+
+# Conclusion
+
+This project demonstrates the effectiveness of CNN architectures in image classification tasks.
+The Deep CNN with Dropout achieved the best overall performance with:
+
+* Higher test accuracy
+* Lower test loss
+* Better generalization on unseen data
